@@ -1,0 +1,21 @@
+{
+  "name": "CodeForX",
+  "version": "0.0.1",
+  "homepage": "https://github.com/CodeForX/CodeForX",
+  "authors": [
+    "Harry Chen <harrychenca@gmail.com>"
+  ],
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
