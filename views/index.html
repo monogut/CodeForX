@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="CodeForX">
 <head>
   <title>CodeForX</title>
+
+  <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/codemirror/lib/codemirror.css">
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" href="public/stylesheets/style.css">
+
+  <!-- CodeMirror -->
+  <script src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/codemirror/lib/codemirror.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
+
+  <!-- Angular -->
+  <script type="text/javascript" src="public/javascripts/controllers.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="container" ng-controller="StaticPagesCtrl">
     <div class="row">
-      <div class="col-xs-6">Test</div>
+      <div class="col-xs-6">
+        {{ test.number }}
+        <ui-codemirror ui-codemirror-opts="editorOptions"></ui-codemirror>
+      </div>
       <div class="col-xs-6">Test</div>
     </div>
   </div>
