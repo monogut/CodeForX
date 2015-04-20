@@ -12,4 +12,5 @@ body {
 
 .CodeMirror {
   height: 100vh;
+  font-size: 22px;
 }

@@ -11,10 +11,13 @@ app.controller('StaticPagesCtrl', function($scope){
     mode: 'javascript',
     theme: 'monokai',
     mode: 'javascript',
-    tabSize: 2
+    tabSize: 2,
+    fontSize: 30
   };
 
-  $scope.answer = {};
+  $scope.answer = {
+    content: "// Welcome to General Assembly \n// Web Development Immersive 7"
+  };
 
   $scope.answer.check = function() {
     $scope.answer.result = eval($scope.answer.content);
