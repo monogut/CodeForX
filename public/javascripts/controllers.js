@@ -10,7 +10,8 @@ app.controller('StaticPagesCtrl', function($scope){
     lineNumbers: true,
     mode: 'javascript',
     theme: 'monokai',
-    mode: 'javascript'
+    mode: 'javascript',
+    tabSize: 2
   };
 
   $scope.answer = {};

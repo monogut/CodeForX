@@ -24,11 +24,13 @@
   <div class="container-fluid" ng-controller="StaticPagesCtrl">
     <div class="row">
       <div class="col-xs-6">
-        {{ test.number }}
-        <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="answer.content"></ui-codemirror>
-        <button ng-click="answer.check()">Submit</button>
+        <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="answer.content" id="codemirror"></ui-codemirror>
       </div>
-      <div class="col-xs-6">{{ answer.result }}</div>
+      <div class="col-xs-6">
+        <button ng-click="answer.check()">Submit</button>
+        
+        {{ answer.result }}
+      </div>
     </div>
   </div>
 </body>
