@@ -1,4 +1,4 @@
-var app = angular.module('CodeForX', ['ui.codemirror']);
+var app = angular.module('SolveForX', ['ui.codemirror']);
 
 app.controller('StaticPagesCtrl', function($scope, $http){
   $scope.test = {
@@ -15,15 +15,15 @@ app.controller('StaticPagesCtrl', function($scope, $http){
   };
 
   $scope.answer = {
-    content: "// Welcome to General Assembly \n// Web Development Immersive 7"
+    content: "// Welcome to General Assembly \n// Web Development Immersive 7\n" + "function palindrome(str) {\n\t// Your solution\n}"
   };
 
   $scope.answer.check = function() {
 
     var data = { answer: $scope.answer.content };
 
-    $http.post('/check', data).success(function(data, status, headers, config) {
-      $scope.answer.result = data;
+    $http.post('/solutions', data).success(function(data, status, headers, config) {
+      $scope.answer.results = data;
     });
   };
 });

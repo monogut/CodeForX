@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="CodeForX">
+<html ng-app="SolveForX">
 <head>
-  <title>CodeForX</title>
+  <title>SolveForX</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
@@ -28,8 +28,12 @@
       </div>
       <div class="col-xs-6">
         <button ng-click="answer.check()">Submit</button>
+        <ul>
+          <li ng-repeat="result in answer.results">
+            palindrome("{{ result.title }}") -> {{ result.answer }} -------------- {{ result.userAnswer ? "You got it right" : "You got it wrong" }}
+          </li>
+        </ul>
         
-        {{ answer.result }}
       </div>
     </div>
   </div>

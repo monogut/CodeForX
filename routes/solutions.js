@@ -1,32 +1,50 @@
 module.exports = function(app) {
   // MongoDB Schema
   var mongoose = require('mongoose');
-  
+
   var answerSchema = mongoose.Schema({
     content: String
   });
 
   var Answer = mongoose.model('Answer', answerSchema);
 
-  app.post('/check', function(req, res){
+  app.post('/solutions', function(req, res){
     if (!req.body) return res.sendStatus(400)
 
     var answer = new Answer({ content: req.body.answer });
+    var answerEval;
 
     answer.save(function (err, answer) {
       if (err) return console.error(err);
 
-      var functionName = "test";
+      var functionName = "palindrome";
 
-      var answerEval = eval(answer.content + functionName + "(9)");
+      var questions = [
+        {
+          title: "bob",
+          answer: true
+        },
+        {
+          title: "abc",
+          answer: false
+        },
+        {
+          title: "harrah",
+          answer: true
+        }
+      ];
 
-      if (answerEval === 9) {
-        res.send("Correct");
-      } else {
-        res.send("Incorrect");
-      }
+      questions.forEach(function (question) {
+        answerEval = eval(answer.content + functionName + "('" + question.title + "')");
 
-      console.log(answer);
+        if (answerEval === question.answer) {
+          question.userAnswer = true;
+        } else {
+          question.userAnswer = false;
+        }
+      });
+
+      res.send(questions);
     });
   });
 };
