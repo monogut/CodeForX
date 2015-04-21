@@ -1,6 +1,6 @@
 var app = angular.module('CodeForX', ['ui.codemirror']);
 
-app.controller('StaticPagesCtrl', function($scope){
+app.controller('StaticPagesCtrl', function($scope, $http){
   $scope.test = {
     number: 1
   };
@@ -10,7 +10,6 @@ app.controller('StaticPagesCtrl', function($scope){
     lineNumbers: true,
     mode: 'javascript',
     theme: 'monokai',
-    mode: 'javascript',
     tabSize: 2,
     fontSize: 30
   };
@@ -20,6 +19,11 @@ app.controller('StaticPagesCtrl', function($scope){
   };
 
   $scope.answer.check = function() {
-    $scope.answer.result = eval($scope.answer.content);
+
+    var data = { answer: $scope.answer.content };
+
+    $http.post('/check', data).success(function(data, status, headers, config) {
+      $scope.answer.result = data;
+    });
   };
 });
