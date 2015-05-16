@@ -1,0 +1,9 @@
+{
+  "name":"CodeForX",
+  "scripts":{},
+  "env":{},
+  "addons":[
+    "mongolab",
+    "newrelic"
+  ]
+}
