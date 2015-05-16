@@ -1,5 +1,3 @@
-var app = angular.module('CodeForX', ['ui.codemirror']);
-
 app.controller('StaticPagesCtrl', function($scope, $http){
   $scope.test = {
     number: 1
