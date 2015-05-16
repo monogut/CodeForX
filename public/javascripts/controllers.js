@@ -1,4 +1,4 @@
-var app = angular.module('SolveForX', ['ui.codemirror']);
+var app = angular.module('CodeForX', ['ui.codemirror']);
 
 app.controller('StaticPagesCtrl', function($scope, $http){
   $scope.test = {

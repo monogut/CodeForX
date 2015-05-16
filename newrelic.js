@@ -8,11 +8,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['SolveForX'],
+  app_name: ['CodeForX'],
   /**
    * Your New Relic license key.
    */
-  license_key: process.env.NEW_RELIC_LICENSE_KEY,
+  license_key: process.env.NEW_RELIC_LICENSE_KEY || 'd3ba8e2702ae86e90fa6dabc4e63c618021cfc45',
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
