@@ -1,50 +1,43 @@
-module.exports = function(app) {
-  // MongoDB Schema
-  var mongoose = require('mongoose');
+module.exports = function(app, customSchema) {
+  // var answer = new customSchema.Answer({});
 
-  var answerSchema = mongoose.Schema({
-    content: String
-  });
+  // app.post('/solutions', function(req, res){
+  //   if (!req.body) return res.sendStatus(400)
 
-  var Answer = mongoose.model('Answer', answerSchema);
+  //   var answer = new Answer({ content: req.body.answer });
+  //   var answerEval;
 
-  app.post('/solutions', function(req, res){
-    if (!req.body) return res.sendStatus(400)
+  //   answer.save(function (err, answer) {
+  //     if (err) return console.error(err);
 
-    var answer = new Answer({ content: req.body.answer });
-    var answerEval;
+  //     var functionName = "palindrome";
 
-    answer.save(function (err, answer) {
-      if (err) return console.error(err);
+  //     var questions = [
+  //       {
+  //         title: "bob",
+  //         answer: true
+  //       },
+  //       {
+  //         title: "abc",
+  //         answer: false
+  //       },
+  //       {
+  //         title: "harrah",
+  //         answer: true
+  //       }
+  //     ];
 
-      var functionName = "palindrome";
+  //     questions.forEach(function (question) {
+  //       answerEval = eval(answer.content + functionName + "('" + question.title + "')");
 
-      var questions = [
-        {
-          title: "bob",
-          answer: true
-        },
-        {
-          title: "abc",
-          answer: false
-        },
-        {
-          title: "harrah",
-          answer: true
-        }
-      ];
+  //       if (answerEval === question.answer) {
+  //         question.userAnswer = true;
+  //       } else {
+  //         question.userAnswer = false;
+  //       }
+  //     });
 
-      questions.forEach(function (question) {
-        answerEval = eval(answer.content + functionName + "('" + question.title + "')");
-
-        if (answerEval === question.answer) {
-          question.userAnswer = true;
-        } else {
-          question.userAnswer = false;
-        }
-      });
-
-      res.send(questions);
-    });
-  });
+  //     res.send(questions);
+  //   });
+  // });
 };
