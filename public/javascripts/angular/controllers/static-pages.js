@@ -1,7 +1,5 @@
 app.controller('StaticPagesCtrl', function($scope, $http){
-  $scope.test = {
-    number: 1
-  };
+  $scope.question = {};
 
   $scope.editorOptions = {
     lineWrapping: true,
@@ -22,6 +20,25 @@ app.controller('StaticPagesCtrl', function($scope, $http){
 
     $http.post('/solutions', data).success(function(data, status, headers, config) {
       $scope.answer.results = data;
+    });
+  };
+
+  $scope.question.submit = function(){
+    console.log($scope.question.question);
+
+    var data = {
+      question: $scope.question.question,
+      testCases: [{
+        input: 1,
+        output: "two"
+      },{
+        input: 2,
+        output: "three"
+      }]
+    };
+
+    $http.post('questions/new', data).success(function(response){
+      console.log(response.testCases);
     });
   };
 });

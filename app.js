@@ -21,10 +21,10 @@ var questionSchema = Schema({
 
 customSchema.Question = mongoose.model('Question', questionSchema);
 
-var routes = require('./routes/index.js')(app, customSchema);
-
 app.use('/public',  express.static(__dirname + '/public'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
+var routes = require('./routes/config.js')(app, customSchema);
 
 var server = app.listen(process.env.PORT || 3000, function(){
   var host = server.address().address;
