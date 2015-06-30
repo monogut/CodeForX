@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6">
+      <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="answer.content" id="codemirror"></ui-codemirror>
+    </div>
+    <div class="col-xs-6">
+      <button ng-click="solution.check_answer()">Submit</button>
+      <ul>
+        <li ng-repeat="result in answer.results">
+          palindrome("{{ result.title }}") -> {{ result.answer }} -------------- {{ result.userAnswer ? "You got it right" : "You got it wrong" }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
