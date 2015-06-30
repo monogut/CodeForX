@@ -1,0 +1,19 @@
+<form ng-submit="question.submit()">
+  <div>
+    <input type="text" placeholder="question" ng-model="question.question">
+  </div>
+  <div>
+    <input type="text" placeholder="function name" ng-model="question.functionName">
+  </div>
+
+  <div ng-repeat="io in question.ios">
+    <input type="text" placeholder="input" ng-model="io.input">
+    <input type="text" placeholder="output" ng-model="io.output">
+  </div>
+
+  <div>
+    <input type="submit">
+  </div>
+</form>
+
+<button ng-click="question.addIo()">Add I/O</button>
