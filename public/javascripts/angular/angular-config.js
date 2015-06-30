@@ -14,7 +14,11 @@ app.config(function($routeProvider, $locationProvider) {
     templateUrl: "/public/templates/questions/index.html",
     controller: "QuestionsIndexCtrl"
   })
+  .when("/questions/:id", {
+    templateUrl: "/public/templates/questions/show.html",
+    controller: "QuestionsShowCtrl"
+  })
   .otherwise( { redirectTo: "/" });
 
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 });
