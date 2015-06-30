@@ -6,8 +6,8 @@
     <div class="col-xs-6">
       <button ng-click="solution.check_answer()">Submit</button>
       <ul>
-        <li ng-repeat="result in answer.results">
-          palindrome("{{ result.title }}") -> {{ result.answer }} -------------- {{ result.userAnswer ? "You got it right" : "You got it wrong" }}
+        <li ng-repeat="result in results track by $index">
+          {{ result }}
         </li>
       </ul>
     </div>

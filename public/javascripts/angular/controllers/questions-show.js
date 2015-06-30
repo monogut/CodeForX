@@ -3,6 +3,7 @@ app.controller('QuestionsShowCtrl', function($scope, $http, $routeParams){
   $scope.question.ios = [];
   $scope.answer = {};
   $scope.solution = {};
+  $scope.results = {};
 
   $scope.editorOptions = {
     lineWrapping: true,
@@ -28,8 +29,8 @@ app.controller('QuestionsShowCtrl', function($scope, $http, $routeParams){
     };
 
     $http.post('/questions/check', data).success(function(data, status, headers, config) {
-      console.log(data);
-      // $scope.answer.results = data;
+      // console.log(data);
+      $scope.results = data;
     });
   };
 });
