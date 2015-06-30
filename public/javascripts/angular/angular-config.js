@@ -5,7 +5,7 @@ app.config(function($routeProvider, $locationProvider) {
     when("/",
       { templateUrl: "/public/templates/static-pages/index.html",
         controller: "StaticPagesCtrl" }).
-    when("/questions",
+    when("/questions/new",
       { templateUrl: "/public/templates/static-pages/index.html",
         controller: "StaticPagesCtrl" }).
     otherwise( { redirectTo: "/" });

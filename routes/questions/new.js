@@ -4,6 +4,7 @@ module.exports = function(app, customSchema) {
 
     var question = new customSchema.Question({ 
       question: req.body.question,
+      functionName: req.body.functionName,
       testCases: req.body.testCases
     });
 

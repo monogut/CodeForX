@@ -4,7 +4,7 @@
       <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="answer.content" id="codemirror"></ui-codemirror>
     </div>
     <div class="col-xs-6">
-      <button ng-click="answer.check()">Submit</button>
+      <button ng-click="solution.check_answer()">Submit</button>
       <ul>
         <li ng-repeat="result in answer.results">
           palindrome("{{ result.title }}") -> {{ result.answer }} -------------- {{ result.userAnswer ? "You got it right" : "You got it wrong" }}
@@ -12,9 +12,24 @@
       </ul>
 
       <form ng-submit="question.submit()">
-        <input type="text" ng-model="question.question">
-        <input type="submit">
+        <div>
+          <input type="text" placeholder="question" ng-model="question.question">
+        </div>
+        <div>
+          <input type="text" placeholder="function name" ng-model="question.functionName">
+        </div>
+
+        <div ng-repeat="io in question.ios">
+          <input type="text" placeholder="input" ng-model="io.input">
+          <input type="text" placeholder="output" ng-model="io.output">
+        </div>
+
+        <div>
+          <input type="submit">
+        </div>
       </form>
+
+      <button ng-click="question.addIo()">Add I/O</button>
     </div>
   </div>
 </div>

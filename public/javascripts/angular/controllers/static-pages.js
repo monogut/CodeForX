@@ -1,5 +1,8 @@
 app.controller('StaticPagesCtrl', function($scope, $http){
   $scope.question = {};
+  $scope.question.ios = [];
+  $scope.answer = {};
+  $scope.solution = {};
 
   $scope.editorOptions = {
     lineWrapping: true,
@@ -10,17 +13,34 @@ app.controller('StaticPagesCtrl', function($scope, $http){
     fontSize: 30
   };
 
-  $scope.answer = {
-    content: "// Welcome to General Assembly \n// Web Development Immersive 7\n" + "function palindrome(str) {\n\t// Your solution\n}"
-  };
+  $http.get('questions').success(function(response){
+    var question = response[0];
 
-  $scope.answer.check = function() {
+    $scope.answer = {
+      content: "// Welcome to General Assembly \n// Web Development Immersive 7\n" + "function " + question.functionName + "() {\n\t// Your solution\n}"
+    };
+  });
+
+  $scope.solution.check_answer = function() {
+    console.log("checking data...");
 
     var data = { answer: $scope.answer.content };
 
-    $http.post('/solutions', data).success(function(data, status, headers, config) {
+    console.log(data);
+
+    $http.post('/questions/check', data).success(function(data, status, headers, config) {
+
+      console.log(data);
       $scope.answer.results = data;
     });
+  };
+
+  $scope.question.addIo = function(){
+    var newIo = {
+      input: "",
+      output: ""
+    };
+    $scope.question.ios.push(newIo);
   };
 
   $scope.question.submit = function(){
@@ -28,17 +48,14 @@ app.controller('StaticPagesCtrl', function($scope, $http){
 
     var data = {
       question: $scope.question.question,
-      testCases: [{
-        input: 1,
-        output: "two"
-      },{
-        input: 2,
-        output: "three"
-      }]
+      functionName: $scope.question.functionName,
+      testCases: $scope.question.ios
     };
 
     $http.post('questions/new', data).success(function(response){
-      console.log(response.testCases);
+      console.log(response);
     });
   };
+
+  $http.get('')
 });
